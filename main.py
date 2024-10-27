@@ -1,21 +1,11 @@
-from flask import Flask
+from src.shorten_url import create_app
 
 
 def main() -> None:
     """
     Entry point for running the application
     """
-    app = Flask(__name__)
-
-    @app.route("/")
-    def root() -> str:
-        """
-        Temporary endpoint to ensure the application is running
-
-        :return: html as a string
-        """
-        return "Hello, world"
-    
+    app = create_app()
     app.run()
 
 
