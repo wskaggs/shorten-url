@@ -5,6 +5,15 @@ from pytest import fixture
 from shorten_url import create_app
 
 
+def config_callback(app: Flask) -> None:
+    """
+    A callback to configure the flask application
+
+    :param app: the flask application to configure
+    """
+    app.config.update(DEBUG=True, TESTING=True)
+
+
 @fixture
 def app() -> Flask:
     """
@@ -12,7 +21,7 @@ def app() -> Flask:
 
     :return: the flask app
     """
-    app = create_app()
+    app = create_app(config_callback)
     return app
 
 
