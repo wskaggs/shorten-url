@@ -1,4 +1,5 @@
 from flask import Flask
+from instance import configs
 from src.shorten_url import create_app
 
 
@@ -8,7 +9,7 @@ def config_callback(app: Flask) -> None:
 
     :param app: the flask application to configure
     """
-    app.config.update(DEBUG=True)
+    app.config.from_object(configs.Development)
 
 
 def main() -> None:

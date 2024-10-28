@@ -2,6 +2,7 @@ from collections.abc import Generator
 from flask import Flask
 from flask.testing import FlaskClient
 from pytest import fixture
+from instance import configs
 from shorten_url import create_app
 
 
@@ -11,7 +12,7 @@ def config_callback(app: Flask) -> None:
 
     :param app: the flask application to configure
     """
-    app.config.update(DEBUG=True, TESTING=True)
+    app.config.from_object(configs.Testing)
 
 
 @fixture
