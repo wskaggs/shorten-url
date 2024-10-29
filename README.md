@@ -15,7 +15,10 @@ generally not be included in version control systems like Git. Therefore,
 an example configuration file is not provided here. See below for any 
 configurations expected by the application.
 
-Currently, no configurations are required.
+```python
+# The database connection URI for the default engine
+SQLALCHEMY_DATABASE_URI: str | sqlalchemy.URL
+```
 
 ## Acknowledgements 
 

@@ -12,13 +12,18 @@ def create_app(config_callback: Callable[[Flask], None]) -> Flask:
     app = Flask(__name__)
     config_callback(app)
     
-    @app.route("/")
-    def root() -> str:
-        """
-        Temporary endpoint to ensure the application is running
+    # Register blueprints
+    from . import blueprints
 
-        :return: html as a string
-        """
-        return "Hello, world"
-    
+    app.register_blueprint(blueprints.main_blueprint)
+
+    # Register/initialize extensions
+    from . import extensions
+
+    extensions.database.init_app(app)
+
+    # Create database tables if not already done
+    with app.app_context():
+        extensions.database.create_all()
+
     return app
