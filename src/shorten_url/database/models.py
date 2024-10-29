@@ -1,13 +1,7 @@
 from __future__ import annotations
 from sqlalchemy import String, ForeignKey
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
-
-
-class ModelBase(DeclarativeBase):
-    """
-    The base class for all SQLAlchemy declarative models
-    """
-    pass
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+from .database import ModelBase
 
 
 class RedirectURL(ModelBase):
